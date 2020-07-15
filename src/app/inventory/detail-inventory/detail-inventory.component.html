@@ -1,0 +1,15 @@
+<div class="container col-4">
+    <div class="card border-dark mb-3" style="max-width: 18rem;" *ngIf="inventory != null">
+        <div class="card-header">{{inventory.InventoryName}}</div>
+        <div class="card-body text-dark">
+            <div class="card-text">{{inventory.Description}}</div>
+            <div class="card-text">it costs {{inventory.Price}}</div>
+        </div>
+    </div>
+    <div *ngIf="inventory != null">
+        <button class="btn btn-primary" (click)="onBackClick()">Back</button>
+    <button class="btn btn-primary" [routerLink]="['/inventory/modify',inventory.Id]">Modify</button>
+    </div>
+    
+</div>
+    

@@ -1,0 +1,17 @@
+<div class="container col-8">
+<table class="table table-striped">
+    <thead>
+        <tr class="bg-warning">
+            <th scope="col">Item</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let inv of allInv" [routerLink]="['/inventory/detail',inv.Id]" appHighlight>
+            <td>{{inv.InventoryName}} </td>
+            <td>{{inv.Price}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
