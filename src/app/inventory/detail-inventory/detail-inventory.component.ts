@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Inventory } from 'src/app/BusinessObjects/IInventory';
 import { InventoryService } from 'src/app/services/inventory/inventory.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import {Location} from '@angular/common';
 
 @Component({
@@ -11,7 +11,7 @@ import {Location} from '@angular/common';
 })
 export class DetailInventoryComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private invService:InventoryService,private location:Location) { }
+  constructor(private route:ActivatedRoute, private invService:InventoryService,private location:Location,private router:Router) { }
 
   id:number;
   inventory:Inventory=null;
@@ -23,6 +23,10 @@ export class DetailInventoryComponent implements OnInit {
 
   onBackClick(){
     this.location.back();
+  }
+  remove(){
+    this.invService.DeleteInventory(this.inventory.Id).subscribe(data=>this.inventory=data);
+    this.router.navigate(['/inventory'])
   }
 
 }
